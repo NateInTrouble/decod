@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+
+<head>
+
+```
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>Codificador</title>
+
+<link
+    rel="stylesheet"
+    href="css/main.css"
+>
+
+<link
+    rel="stylesheet"
+    href="css/dark.css"
+    id="dark-theme"
+>
+
+<link
+    rel="stylesheet"
+    href="css/light.css"
+    id="light-theme"
+    disabled
+>
+```
+
+</head>
+
+<body>
+
+```
+<button
+    id="theme-button"
+    class="theme-button"
+    title="Alterar tema"
+>
+    ☼
+</button>
+
+
+<section
+    id="quote-screen"
+    class="screen quote-screen"
+>
+
+    <div
+        id="quote"
+        class="quote"
+    ></div>
+
+</section>
+
+
+<section
+    id="welcome-screen"
+    class="screen hidden"
+>
+
+    <div class="container welcome-container">
+
+        <div class="symbol">
+            🛸
+        </div>
+
+        <h1>
+            Bem Vindo
+        </h1>
+
+        <img
+            src="assets/fake-ad.jpg"
+            alt="Imagem de apresentação"
+            class="welcome-image"
+        >
+
+        <button
+            id="start-button"
+            class="start-button"
+            onclick="startApplication()"
+        >
+            Iniciar
+        </button>
+
+    </div>
+
+</section>
+
+
+<section
+    id="home-screen"
+    class="screen hidden"
+>
+
+    <div class="container">
+
+        <div class="symbol">
+            🛸
+        </div>
+
+        <h1>
+            Codificador
+        </h1>
+
+        <p class="subtitle">
+            Escolha uma operação
+        </p>
+
+        <div class="options">
+
+            <button
+                class="option-button"
+                onclick="openOperation('encode')"
+            >
+
+                <span>
+                    Codificar
+                </span>
+
+                <small>
+                    Transformar uma mensagem
+                </small>
+
+            </button>
+
+
+            <button
+                class="option-button"
+                onclick="openOperation('decode')"
+            >
+
+                <span>
+                    Decodificar
+                </span>
+
+                <small>
+                    Revelar uma mensagem
+                </small>
+
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<section
+    id="operation-screen"
+    class="screen hidden"
+>
+
+    <div class="container">
+
+        <button
+            class="back-button"
+            onclick="showHome()"
+        >
+            ← Voltar
+        </button>
+
+
+        <div class="symbol">
+            🛸
+        </div>
+
+
+        <h1 id="operation-title">
+            Codificar
+        </h1>
+
+
+        <div class="form">
+
+            <label for="algorithm">
+                Algoritmo
+            </label>
+
+
+            <select id="algorithm">
+
+                <option value="caesar">
+                    Cifra de César
+                </option>
+
+                <option value="vigenere">
+                    Cifra de Vigenère
+                </option>
+
+                <option value="base64">
+                    Base64
+                </option>
+
+            </select>
+
+
+            <label for="key">
+                Chave
+            </label>
+
+
+            <input
+                id="key"
+                type="text"
+                placeholder="Digite a chave"
+            >
+
+
+            <label for="text">
+                Mensagem
+            </label>
+
+
+            <textarea
+                id="text"
+                placeholder="Digite sua mensagem..."
+            ></textarea>
+
+
+            <button
+                class="process-button"
+                onclick="processText()"
+            >
+                Processar
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<section
+    id="loading-screen"
+    class="screen hidden"
+>
+
+    <div class="container loading-container">
+
+        <div class="symbol">
+            🛸
+        </div>
+
+
+        <h1>
+            Processando
+        </h1>
+
+
+        <div class="loading-bar">
+
+            <div
+                class="loading-progress"
+            ></div>
+
+        </div>
+
+
+        <p id="loading-quote"></p>
+
+    </div>
+
+</section>
+
+
+<section
+    id="result-screen"
+    class="screen hidden"
+>
+
+    <div class="container">
+
+        <div class="symbol">
+            🛸
+        </div>
+
+
+        <h1>
+            Resultado
+        </h1>
+
+
+        <div class="result-box">
+
+            <div id="result"></div>
+
+        </div>
+
+
+        <div class="explanation">
+
+            <h2 id="algorithm-name"></h2>
+
+
+            <h3>
+                Como funciona
+            </h3>
+
+
+            <p id="how"></p>
+
+
+            <h3>
+                Como quebrar
+            </h3>
+
+
+            <p id="breaking"></p>
+
+        </div>
+
+
+        <button
+            class="process-button"
+            onclick="showHome()"
+        >
+            Nova operação
+        </button>
+
+    </div>
+
+</section>
+
+
+<script src="js/animations.js"></script>
+
+<script src="js/api.js"></script>
+
+<script src="js/app.js"></script>
+```
+
+</body>
+
+</html>
