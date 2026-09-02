@@ -1,0 +1,432 @@
+:root {
+    --background: #0b0b0b;
+    --background-secondary: #111111;
+    --text: #e6e6e6;
+    --secondary-text: #aaaaaa;
+    --gold: #d4af37;
+    --border: #5a4714;
+    --input-background: #111111;
+    --button-background: #151515;
+    --green: #2e7d32;
+}
+
+body.light {
+    --background: #f1eee6;
+    --background-secondary: #ffffff;
+    --text: #222222;
+    --secondary-text: #555555;
+    --gold: #9a7510;
+    --border: #b89b4a;
+    --input-background: #ffffff;
+    --button-background: #f5f2ea;
+    --green: #2e7d32;
+}
+
+
+* {
+    box-sizing: border-box;
+}
+
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 100%;
+}
+
+
+body {
+    background: var(--background);
+    color: var(--text);
+    font-family: Georgia, "Times New Roman", serif;
+    transition:
+        background 0.4s ease,
+        color 0.4s ease;
+}
+
+
+button,
+input,
+textarea,
+select {
+    font-family: inherit;
+}
+
+
+button {
+    cursor: pointer;
+}
+
+
+.hidden {
+    display: none !important;
+}
+
+
+.screen {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+}
+
+
+.container {
+    width: 100%;
+    max-width: 700px;
+    text-align: center;
+}
+
+
+.symbol {
+    color: var(--gold);
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+
+h1 {
+    color: var(--gold);
+    font-size: 42px;
+    margin: 10px 0 15px;
+}
+
+
+h2 {
+    color: var(--gold);
+}
+
+
+.subtitle {
+    color: var(--secondary-text);
+    font-size: 18px;
+}
+
+
+.quote-screen {
+    background: var(--background);
+}
+
+
+.quote {
+    max-width: 800px;
+    margin: auto;
+    color: var(--text);
+    font-size: 23px;
+    line-height: 1.7;
+    font-style: italic;
+}
+
+
+.theme-button {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 100;
+    width: 42px;
+    height: 42px;
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    background: var(--button-background);
+    color: var(--gold);
+    font-size: 22px;
+}
+
+
+.help-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 100;
+    width: 38px;
+    height: 38px;
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    background: var(--button-background);
+    color: var(--gold);
+    font-size: 20px;
+}
+
+
+.options {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 35px;
+}
+
+
+.options button,
+.action-button,
+.start-button {
+    width: 100%;
+    padding: 16px 20px;
+    border: 1px solid var(--gold);
+    background: var(--button-background);
+    color: var(--gold);
+    font-size: 18px;
+    transition:
+        background 0.3s ease,
+        color 0.3s ease,
+        transform 0.2s ease;
+}
+
+
+.options button:hover,
+.action-button:hover {
+    background: var(--gold);
+    color: var(--background);
+    transform: translateY(-2px);
+}
+
+
+.start-button {
+    width: 220px;
+    margin-top: 25px;
+    border-color: var(--green);
+    background: var(--green);
+    color: white;
+}
+
+
+.start-button:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.1);
+}
+
+
+.welcome-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.welcome-image {
+    display: block;
+    width: min(500px, 90vw);
+    max-height: 450px;
+    object-fit: contain;
+    margin-bottom: 25px;
+}
+
+
+.back-button {
+    position: absolute;
+    top: 25px;
+    left: 25px;
+    padding: 10px 16px;
+    border: 1px solid var(--border);
+    background: var(--button-background);
+    color: var(--gold);
+}
+
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 30px;
+    text-align: left;
+}
+
+
+.form label {
+    color: var(--gold);
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+
+.form input,
+.form textarea,
+.form select {
+    width: 100%;
+    padding: 14px;
+    border: 1px solid var(--border);
+    outline: none;
+    background: var(--input-background);
+    color: var(--text);
+    font-size: 16px;
+}
+
+
+.form textarea {
+    min-height: 180px;
+    resize: vertical;
+}
+
+
+.form input:focus,
+.form textarea:focus,
+.form select:focus {
+    border-color: var(--gold);
+}
+
+
+.action-button {
+    margin-top: 20px;
+}
+
+
+.loading-quote {
+    min-height: 100px;
+    color: var(--secondary-text);
+    font-size: 20px;
+    font-style: italic;
+    line-height: 1.6;
+}
+
+
+.loading-bar {
+    width: 100%;
+    height: 6px;
+    overflow: hidden;
+    margin-top: 35px;
+    background: var(--background-secondary);
+    border: 1px solid var(--border);
+}
+
+
+.loading-progress {
+    width: 0;
+    height: 100%;
+    background: var(--gold);
+    animation: loading 1.2s linear forwards;
+}
+
+
+@keyframes loading {
+    from {
+        width: 0;
+    }
+
+    to {
+        width: 100%;
+    }
+}
+
+
+.result-box {
+    margin-top: 30px;
+    padding: 25px;
+    border: 1px solid var(--border);
+    background: var(--background-secondary);
+    overflow-wrap: anywhere;
+}
+
+
+.result {
+    color: var(--text);
+    font-family: "Courier New", monospace;
+    font-size: 18px;
+    line-height: 1.7;
+}
+
+
+.explanation {
+    margin-top: 25px;
+    padding: 25px;
+    border: 1px solid var(--border);
+    background: var(--background-secondary);
+    text-align: left;
+}
+
+
+.explanation p {
+    color: var(--secondary-text);
+    line-height: 1.7;
+}
+
+
+.converter-option {
+    margin-top: 5px;
+}
+
+
+.base-result-container {
+    margin-top: 25px;
+    padding: 20px;
+    border: 1px solid var(--gold);
+    background: var(--background-secondary);
+}
+
+
+.base-result-container span {
+    display: block;
+    color: var(--gold);
+    margin-bottom: 10px;
+}
+
+
+.base-result {
+    color: var(--text);
+    font-family: "Courier New", monospace;
+    font-size: 24px;
+    overflow-wrap: anywhere;
+}
+
+
+.easter-egg-screen {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    background: var(--background);
+}
+
+
+.easter-image {
+    max-width: 90vw;
+    max-height: 90vh;
+    object-fit: contain;
+}
+
+
+.easter-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 45px;
+    height: 45px;
+    border: 1px solid var(--border);
+    background: var(--button-background);
+    color: var(--gold);
+    font-size: 28px;
+}
+
+
+@media (max-width: 600px) {
+
+    h1 {
+        font-size: 32px;
+    }
+
+    .quote {
+        font-size: 19px;
+    }
+
+    .screen {
+        padding: 30px 15px;
+    }
+
+    .back-button {
+        position: static;
+        margin-bottom: 20px;
+    }
+
+    .welcome-image {
+        width: 95vw;
+    }
+
+    .base-result {
+        font-size: 19px;
+    }
+}

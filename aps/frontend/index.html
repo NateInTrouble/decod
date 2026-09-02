@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Codificador</title>
+
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/dark.css" id="dark-theme">
+    <link rel="stylesheet" href="css/light.css" id="light-theme">
+</head>
+
+<body>
+
+    <button id="theme-button" class="theme-button" title="Alterar tema">☼</button>
+
+    <button
+        class="help-button"
+        onclick="showEasterEgg()"
+        title="Golden Plate"
+    >
+        ?
+    </button>
+
+    <main>
+
+        <section id="quote-screen" class="screen quote-screen">
+            <div class="container">
+                <div class="symbol">✦</div>
+                <p id="quote" class="quote"></p>
+            </div>
+        </section>
+
+        <section id="welcome-screen" class="screen hidden">
+            <div class="container welcome-container">
+
+                <img
+                    src="assets/fake-ad.png"
+                    alt="Tela inicial"
+                    class="welcome-image"
+                >
+
+                <h1>Bem Vindo</h1>
+
+                <button
+                    class="start-button"
+                    onclick="startApplication()"
+                >
+                    Iniciar
+                </button>
+
+            </div>
+        </section>
+
+        <section id="home-screen" class="screen hidden">
+            <div class="container">
+
+                <div class="symbol">✦</div>
+
+                <h1>Codificador</h1>
+
+                <p class="subtitle">
+                    Escolha uma operação
+                </p>
+
+                <div class="options">
+
+                    <button onclick="openOperation('encode')">
+                        Codificar
+                    </button>
+
+                    <button onclick="openOperation('decode')">
+                        Decodificar
+                    </button>
+
+                    <button
+                        class="converter-option"
+                        onclick="openBaseConverter()"
+                    >
+                        Conversor de Bases
+                    </button>
+
+                </div>
+
+            </div>
+        </section>
+
+        <section id="operation-screen" class="screen hidden">
+            <div class="container">
+
+                <button
+                    class="back-button"
+                    onclick="showHome()"
+                >
+                    ← Voltar
+                </button>
+
+                <div class="symbol">✦</div>
+
+                <h1 id="operation-title">
+                    Codificar
+                </h1>
+
+                <div class="form">
+
+                    <label for="algorithm">
+                        Algoritmo
+                    </label>
+
+                    <select id="algorithm">
+                        <option value="caesar">
+                            Cifra de César
+                        </option>
+
+                        <option value="vigenere">
+                            Cifra de Vigenère
+                        </option>
+
+                        <option value="base64">
+                            Base64
+                        </option>
+                    </select>
+
+                    <label for="text">
+                        Texto
+                    </label>
+
+                    <textarea
+                        id="text"
+                        placeholder="Digite seu texto..."
+                    ></textarea>
+
+                    <label for="key">
+                        Chave
+                    </label>
+
+                    <input
+                        type="text"
+                        id="key"
+                        placeholder="Digite a chave..."
+                    >
+
+                    <button
+                        class="action-button"
+                        onclick="processText()"
+                    >
+                        Executar
+                    </button>
+
+                </div>
+
+            </div>
+        </section>
+
+        <section id="converter-screen" class="screen hidden">
+            <div class="container">
+
+                <button
+                    class="back-button"
+                    onclick="showHome()"
+                >
+                    ← Voltar
+                </button>
+
+                <div class="symbol">✦</div>
+
+                <h1>Conversor de Bases</h1>
+
+                <p class="subtitle">
+                    Converta entre binário, octal, decimal e hexadecimal.
+                </p>
+
+                <div class="form">
+
+                    <label for="base-value">
+                        Valor
+                    </label>
+
+                    <input
+                        type="text"
+                        id="base-value"
+                        placeholder="Digite o valor..."
+                    >
+
+                    <label for="from-base">
+                        Base de origem
+                    </label>
+
+                    <select id="from-base">
+                        <option value="decimal">
+                            Decimal — Base 10
+                        </option>
+
+                        <option value="binary">
+                            Binário — Base 2
+                        </option>
+
+                        <option value="octal">
+                            Octal — Base 8
+                        </option>
+
+                        <option value="hexadecimal">
+                            Hexadecimal — Base 16
+                        </option>
+                    </select>
+
+                    <label for="to-base">
+                        Base de destino
+                    </label>
+
+                    <select id="to-base">
+
+                        <option value="binary">
+                            Binário — Base 2
+                        </option>
+
+                        <option value="decimal">
+                            Decimal — Base 10
+                        </option>
+
+                        <option value="octal">
+                            Octal — Base 8
+                        </option>
+
+                        <option value="hexadecimal">
+                            Hexadecimal — Base 16
+                        </option>
+
+                    </select>
+
+                    <button
+                        class="action-button"
+                        onclick="convertBase()"
+                    >
+                        Converter
+                    </button>
+
+                    <div
+                        id="base-result-container"
+                        class="base-result-container hidden"
+                    >
+                        <span>Resultado</span>
+
+                        <div id="base-result" class="base-result"></div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <section id="loading-screen" class="screen hidden">
+            <div class="container">
+
+                <div class="symbol">✦</div>
+
+                <p class="loading-quote" id="loading-quote"></p>
+
+                <div class="loading-bar">
+                    <div class="loading-progress"></div>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="result-screen" class="screen hidden">
+            <div class="container">
+
+                <div class="symbol">✦</div>
+
+                <h1>Resultado</h1>
+
+                <div class="result-box">
+
+                    <div
+                        id="result"
+                        class="result"
+                    ></div>
+
+                </div>
+
+                <div class="explanation">
+
+                    <h2>Sobre o algoritmo</h2>
+
+                    <p id="explanation-text"></p>
+
+                </div>
+
+                <button
+                    class="action-button"
+                    onclick="showHome()"
+                >
+                    Voltar ao início
+                </button>
+
+            </div>
+        </section>
+
+        <section
+            id="easter-egg-screen"
+            class="easter-egg-screen hidden"
+        >
+
+            <button
+                class="easter-close"
+                onclick="closeEasterEgg()"
+            >
+                ×
+            </button>
+
+            <img
+                src="assets/golden_plate.jpg"
+                alt="Golden Plate"
+                class="easter-image"
+            >
+
+        </section>
+
+    </main>
+
+    <script src="js/animations.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/app.js"></script>
+
+</body>
+</html>
